@@ -11,6 +11,7 @@ struct ContentView: View {
     //MARK: - Properties
     
     var fruits: [Fruit] = fruitsData
+    @State private var isShowingSettings: Bool = false
     
     //MARK: - Body
     var body: some View {
@@ -24,7 +25,18 @@ struct ContentView: View {
                 }
             }
             .navigationTitle("Fruits")
+            .navigationBarItems(trailing:Button(action:{
+                isShowingSettings = true
+            }) {
+                Image(systemName: "slider.horizontal.3")
+            }
+            )
+            .sheet(isPresented: $isShowingSettings, content: {
+                SettingsView()
+            })
         }
+        //아이패드에서 크게 보임
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 

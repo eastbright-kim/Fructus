@@ -30,12 +30,21 @@ struct FruitDetailView: View {
                             .font(.headline)
                             .multilineTextAlignment(.leading)
                         
+                        //NUTRIENTS
+                        
+                        FruitNutrientsView(fruit: fruit)
+                        
+                        
                         Text("Learn more about \(fruit.title)".uppercased())
                             .fontWeight(.bold)
                             .foregroundColor(fruit.gradientColors[1])
                         
                         Text(fruit.description)
                             .multilineTextAlignment(.leading)
+                        
+                        SourceLinkView()
+                            .padding(.top, 10)
+                            .padding(.bottom, 40)
                     }//:VSTACK
                     .padding(.horizontal, 20)
                     .frame(maxWidth: 640, alignment: .center)
@@ -46,7 +55,7 @@ struct FruitDetailView: View {
             }//:SCROLL
             .edgesIgnoringSafeArea(.top)
         } //:NAVIGATION
-
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 }
 
